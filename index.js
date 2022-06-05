@@ -1,3 +1,5 @@
+'use strict'
+
 let btn = document.getElementsByClassName('scroll-down')[0]
 
 btn.addEventListener('click', e => {
