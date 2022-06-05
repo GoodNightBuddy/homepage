@@ -36,8 +36,6 @@ function animateContainers() {
   }
 }
 
-// animateContainers()
-
 
 function getCoords(elem) {
   let box = elem.getBoundingClientRect();
@@ -51,7 +49,7 @@ function getCoords(elem) {
 }
 
 
-// animate once
+// animate running block first
 
 function animateContainersOnce(time) {
     let containers = document.getElementsByClassName('container')
