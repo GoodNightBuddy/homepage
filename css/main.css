@@ -1,5 +1,4 @@
 /* General styles */
-
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +8,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
-
   --primary-text-color: #181820;
   --secondary-text-color: #5c5c62;
   --durability-text-color: #6a737d9c;
@@ -51,29 +49,23 @@ body {
 }
 
 @media screen and (max-width: 576px) {
-
   .main-info,
   .contact_info_container {
     flex-direction: column;
-
   }
-
   .contact_info_container,
   .contact-info__block {
     align-items: center;
   }
-
   .contact-info__block:not(:last-child) {
     margin-bottom: 20px;
   }
-
   .experiences {
     margin-right: 0;
   }
 }
 
 /* Contact info styles */
-
 .contact-info__header,
 .contact-info__sub-header {
   text-align: center;
@@ -133,12 +125,10 @@ body {
   width: 100px;
   height: 100px;
   object-fit: cover;
-  border: 3px solid;
   border-color: var(--text-decoration-color);
 }
 
 /* Intro and skills styles */
-
 .intro {
   display: flex;
   justify-content: start;
@@ -177,7 +167,6 @@ body {
 }
 
 /* Experience and additional info styles */
-
 .experiences {
   flex: 1 1 60%;
   margin-right: 50px;
@@ -273,17 +262,14 @@ body {
 }
 
 /* My features */
-
 /* .resume {
   background: url(./assets/pexels-henry-&-co-1939485.jpg) no-repeat fixed bottom;
   background-size: cover;
 
 } */
-
 html {
   scroll-behavior: smooth;
 }
-
 
 *,
 :after,
@@ -295,7 +281,6 @@ html {
 
 .scroll-down {
   opacity: 1;
-  -webkit-transition: all .5s ease-in 3s;
   transition: all .5s ease-in 3s;
   cursor: pointer;
 }
@@ -312,9 +297,7 @@ html {
   background-size: 14px auto;
   border-radius: 50%;
   z-index: 2;
-  -webkit-animation: bounce 2s infinite 2s;
   animation: bounce 2s infinite 2s;
-  -webkit-transition: all .2s ease-in;
   transition: all .2s ease-in;
 }
 
@@ -332,26 +315,17 @@ html {
 }
 
 @keyframes bounce {
-
   0%,
   100%,
   20%,
   50%,
   80% {
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
     transform: translateY(0);
   }
-
   40% {
-    -webkit-transform: translateY(10px);
-    -ms-transform: translateY(10px);
     transform: translateY(10px);
   }
-
   60% {
-    -webkit-transform: translateY(5px);
-    -ms-transform: translateY(5px);
     transform: translateY(5px);
   }
 }
@@ -369,14 +343,50 @@ html {
     top: calc(50% - 2px);
     left: calc(50% - 4px);
   }
-
   .scroll-down {
     left: 1%;
     width: 26px;
     height: 26px;
   }
-
   .resume {
     padding: 30px 15px;
+  }
+}
+
+.gradient-border {
+  --border-width: 3px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  font-family: Lato, sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: white;
+  background: #222;
+  border-radius: 50%;
+}
+
+.gradient-border::after {
+  position: absolute;
+  content: "";
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  z-index: -1;
+  width: calc(100% + var(--border-width) * 2);
+  height: calc(100% + var(--border-width) * 2);
+  background: linear-gradient(60deg, #5f86f2, #a65ff2, #f25fd0, #f25f61, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  border-radius: 50%;
+  animation: moveGradient 4s alternate infinite;
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
   }
 }
