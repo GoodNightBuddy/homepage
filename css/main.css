@@ -17,9 +17,23 @@ body {
 }
 
 .container {
-  margin: 0 auto;
+  opacity: 0;
+  margin-left: -110%;
   padding: 0 30px;
   max-width: 900px;
+  transition-property: margin-left, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+
+.container.swipe {
+  margin-left: 0;
+  opacity: 1;
+  transition-property: margin-left, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
 }
 
 .fh {
@@ -262,11 +276,7 @@ body {
 }
 
 /* My features */
-/* .resume {
-  background: url(./assets/pexels-henry-&-co-1939485.jpg) no-repeat fixed bottom;
-  background-size: cover;
-
-} */
+/* Scroll up button */
 html {
   scroll-behavior: smooth;
 }
@@ -353,6 +363,7 @@ html {
   }
 }
 
+/* .contact-info__avatar border animation */
 .gradient-border {
   --border-width: 3px;
   position: relative;
@@ -390,3 +401,15 @@ html {
     background-position: 100% 50%;
   }
 }
+
+/*Links hover */
+.contact-info__item:hover {
+  opacity: 0.6;
+  transition: all 0.2s linear;
+}
+
+.contact-info__item {
+  transition: all 0.2s linear;
+}
+
+/* Containers animation */
