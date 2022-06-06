@@ -37,7 +37,7 @@ function animateContainers() {
     const coords = container.getBoundingClientRect()
     const height = container.offsetHeight
     const scrollHeight = document.documentElement.clientHeight
-    const animStart = 4
+    const animStart = 2
 
     if (coords.top > 0 - height / animStart && coords.top < scrollHeight - height / animStart) {
       container.classList.add('swipe')
@@ -113,10 +113,10 @@ for (let el of animateList) {
 
 function animateText(el) {
   let text = el.innerText;
-  let height = el.offsetHeight
-  let width = el.offsetWidth
-  el.style.height = height + 'px'
-  el.style.width = width + 'px'
+  // let height = el.offsetHeight
+  // let width = el.offsetWidth
+  // el.style.height = height + 'px'
+  // el.style.width = width + 'px'
   let to = text.length,
     from = 0;
 
