@@ -255,6 +255,10 @@ body {
 .additional-info__education-header {
   color: var(--secondary-text-color);
   text-align: left;
+  margin-bottom: 10px;
+}
+
+.additional-info__education-university {
   margin-bottom: 20px;
 }
 
@@ -268,7 +272,7 @@ body {
 .additional-info__education-university-speciality {
   color: var(--primary-text-color);
   text-align: left;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .additional-info__education-university-name {
@@ -282,7 +286,7 @@ body {
 .additional-info__languages-header {
   color: var(--secondary-text-color);
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .additional-info__languages-item {
@@ -326,9 +330,7 @@ html {
   background-size: 14px auto;
   border-radius: 50%;
   z-index: 2;
-  -webkit-animation: bounce 2s infinite 2s;
   animation: bounce 2s infinite 2s;
-  -webkit-transition: all .2s ease-in;
   transition: all .2s ease-in;
 }
 
@@ -352,20 +354,14 @@ html {
   20%,
   50%,
   80% {
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
     transform: translateY(0);
   }
 
   40% {
-    -webkit-transform: translateY(10px);
-    -ms-transform: translateY(10px);
     transform: translateY(10px);
   }
 
   60% {
-    -webkit-transform: translateY(5px);
-    -ms-transform: translateY(5px);
     transform: translateY(5px);
   }
 }
@@ -464,4 +460,32 @@ html {
 ::-webkit-scrollbar-thumb{ 
   background: linear-gradient(130deg,#ff9a00,#ff9a0045); 
   border-radius: 5px; 
+}
+
+/* Animat for location */
+
+
+.animate_bounce {
+  animation: bounce-reverse 2s infinite 2s;
+  transition: all .2s ease-in;
+}
+
+
+@keyframes bounce-reverse {
+
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
 }
