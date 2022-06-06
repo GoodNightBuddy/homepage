@@ -15,14 +15,13 @@ window.addEventListener('scroll', showScrollUpButton)
 function showScrollUpButton() {
   if (window.pageYOffset === 0) {
     btn.style.top = document.documentElement.clientHeight + 5 + 'px'
+    btn.style.transitionProperty = 'top'
   }
-  if (window.pageYOffset > 0) {
-    btn.style.top = document.documentElement.clientHeight - window.pageYOffset + 5 + 'px'
-    if (btn.style.top <= document.documentElement.clientHeight - 62 + 'px') {
-      btn.style.top = document.documentElement.clientHeight - 62 + 'px'
-    }
+  if (window.pageYOffset > 10) {
+    btn.style.top = document.documentElement.clientHeight - 62 + 'px'
   }
 }
+
 showScrollUpButton()
 
 
@@ -34,19 +33,27 @@ function animateContainers() {
   let containers = document.getElementsByClassName('container')
 
   for (let container of containers) {
-    const coords = container.getBoundingClientRect()
+    const coords = getCoords(container)
     const height = container.offsetHeight
     const scrollHeight = document.documentElement.clientHeight
-    const animStart = 4
+    let animPoint = 4
+    if (document.documentElement.clientWidth < 850) {
+      animPoint = animPoint * 1.5
+    }
 
-    if (coords.top > 0 - height / animStart && coords.top < scrollHeight - height / animStart) {
+    let animStart = height / animPoint
+    if (height > document.documentElement.clientHeight) {
+      animStart = document.documentElement.clientHeight / animPoint
+    }
+
+
+    if (coords.top < (window.pageYOffset + scrollHeight - animStart) && coords.top > (window.pageYOffset - animStart * (animPoint - 1))) {
       container.classList.add('swipe')
     } else {
       container.classList.remove('swipe')
     }
   }
 }
-
 
 function getCoords(elem) {
   let box = elem.getBoundingClientRect();
@@ -113,10 +120,6 @@ for (let el of animateList) {
 
 function animateText(el) {
   let text = el.innerText;
-  let height = el.offsetHeight
-  let width = el.offsetWidth
-  el.style.height = height + 'px'
-  el.style.width = width + 'px'
   let to = text.length,
     from = 0;
 
@@ -197,20 +200,3 @@ function spin(el) {
 setInterval(() => {
   spin(codeWars)
 }, 2000);
-
-
-
-
-// function bounce(timeFraction) {
-//   for (let a = 0, b = 1; 1; a += b, b /= 2) {
-//     if (timeFraction >= (7 - 4 * a) / 11) {
-//       return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
-//     }
-//   }
-// }
-
-// let scrollHeight = Math.max(
-//   document.body.scrollHeight, document.documentElement.scrollHeight,
-//   document.body.offsetHeight, document.documentElement.offsetHeight,
-//   document.body.clientHeight, document.documentElement.clientHeight
-// );
