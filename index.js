@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 //Sroll up button
 
@@ -112,6 +112,7 @@ function linear(timeFraction) {
   return timeFraction;
 }
 
+
 let animateList = document.getElementsByClassName('animate-text')
 
 for (let el of animateList) {
@@ -124,7 +125,7 @@ function animateText(el) {
     from = 0;
 
   animate({
-    duration: 5000,
+    duration: 3000,
     timing: linear,
     draw: function (progress) {
       let result = (to - from) * progress + from;
@@ -135,7 +136,7 @@ function animateText(el) {
 
 // Rotate skobki
 
-function animateForIntro({ timing, draw, duration }) { 
+function animateForIntro({ timing, draw, duration }) {
   let start = performance.now();
 
   requestAnimationFrame(function animateForIntro(time) {
