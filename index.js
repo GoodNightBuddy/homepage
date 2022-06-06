@@ -121,7 +121,7 @@ function animateText(el) {
     from = 0;
 
   animate({
-    duration: 5000,
+    duration: 3000,
     timing: linear,
     draw: function (progress) {
       let result = (to - from) * progress + from;
