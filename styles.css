@@ -1,3 +1,4 @@
+/* General styles */
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +8,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
-
   --primary-text-color: #181820;
   --secondary-text-color: #5c5c62;
   --durability-text-color: #6a737d9c;
@@ -17,9 +17,23 @@ body {
 }
 
 .container {
-  margin: 0 auto;
+  opacity: 0;
+  margin-left: -110%;
   padding: 0 30px;
   max-width: 900px;
+  transition-property: margin-left, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+
+.container.swipe {
+  margin-left: 0;
+  opacity: 1;
+  transition-property: margin-left, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
 }
 
 .fh {
@@ -53,19 +67,19 @@ body {
   .contact_info_container {
     flex-direction: column;
   }
-
-  .contact_info_container {
+  .contact_info_container,
+  .contact-info__block {
     align-items: center;
   }
-
   .contact-info__block:not(:last-child) {
     margin-bottom: 20px;
   }
-
   .experiences {
     margin-right: 0;
   }
 }
+
+/* Contact info styles */
 .contact-info__header,
 .contact-info__sub-header {
   text-align: center;
@@ -125,10 +139,10 @@ body {
   width: 100px;
   height: 100px;
   object-fit: cover;
-  border: 3px solid;
   border-color: var(--text-decoration-color);
 }
 
+/* Intro and skills styles */
 .intro {
   display: flex;
   justify-content: start;
@@ -166,6 +180,7 @@ body {
   text-align: justify;
 }
 
+/* Experience and additional info styles */
 .experiences {
   flex: 1 1 60%;
   margin-right: 50px;
@@ -226,6 +241,10 @@ body {
 .additional-info__education-header {
   color: var(--secondary-text-color);
   text-align: left;
+  margin-bottom: 10px;
+}
+
+.additional-info__education-university {
   margin-bottom: 20px;
 }
 
@@ -239,7 +258,7 @@ body {
 .additional-info__education-university-speciality {
   color: var(--primary-text-color);
   text-align: left;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .additional-info__education-university-name {
@@ -253,9 +272,182 @@ body {
 .additional-info__languages-header {
   color: var(--secondary-text-color);
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .additional-info__languages-item {
   color: var(--secondary-text-color);
+}
+
+/* My features */
+/* Scroll up button */
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.scroll-down {
+  opacity: 1;
+  transition: all .5s ease-in 3s;
+  cursor: pointer;
+}
+
+.scroll-down {
+  position: fixed;
+  /* bottom: 30px; */
+  left: 2.5%;
+  transform: translateX(-50%);
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--icon-color);
+  background-size: 14px auto;
+  border-radius: 50%;
+  z-index: 2;
+  animation: bounce 2s infinite 2s;
+  transition: all .2s ease-in;
+}
+
+.scroll-down:before {
+  position: absolute;
+  top: calc(50% - 3px);
+  left: calc(50% - 6px);
+  transform: rotate(135deg);
+  display: block;
+  width: 12px;
+  height: 12px;
+  content: "";
+  border: 2px solid var(--icon-color);
+  border-width: 0px 0 2px 2px;
+}
+
+@keyframes bounce {
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+  60% {
+    transform: translateY(5px);
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .scroll-down {
+    left: 2%;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .scroll-down:before {
+    width: 8px;
+    height: 8px;
+    top: calc(50% - 2px);
+    left: calc(50% - 4px);
+  }
+  .scroll-down {
+    left: 1%;
+    width: 26px;
+    height: 26px;
+  }
+  .resume {
+    padding: 30px 15px;
+  }
+}
+
+/* .contact-info__avatar border animation */
+.gradient-border {
+  --border-width: 3px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  font-family: Lato, sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: white;
+  background: var(--icon-color);
+  border-radius: 50%;
+}
+
+.gradient-border::after {
+  position: absolute;
+  content: "";
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  z-index: -1;
+  width: calc(100% + var(--border-width) * 2);
+  height: calc(100% + var(--border-width) * 2);
+  background: linear-gradient(60deg, #5c5c62, #78797a9c, #ff9a00, #ff9a0045, #6a737d);
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  border-radius: 50%;
+  animation: moveGradient 4s alternate infinite;
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/*Links hover */
+.contact-info__item:hover {
+  opacity: 0.6;
+  transition: all 0.1s linear;
+}
+
+.contact-info__item {
+  transition: all 0.1s linear;
+}
+
+/* Scroll bar styles*/
+::-webkit-scrollbar {
+  background: #191970;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #eee8df;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(130deg, #ff9a00, #ff9a0045);
+  border-radius: 5px;
+}
+
+/* Animat for location */
+.animate_bounce {
+  animation: bounce-reverse 2s infinite 2s;
+  transition: all .2s ease-in;
+}
+
+@keyframes bounce-reverse {
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
